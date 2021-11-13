@@ -20,12 +20,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         await client.connect();
-        // // console.log('database connected succesfully');
-        // const database = client.db('online_shopHotel');
-        // const productCollection = database.collection('products');
-        // // const orderCollection = database.collection('orders');
-        // const bookingsCollection = database.collection('bookings')
-        // const usersCollection = database.collection('users');
 
 
 
@@ -65,32 +59,6 @@ async function run() {
             const result = await reviewCollection.insertOne(req.body);
             res.send(result);
         });
-
-        // // get all service
-        // app.get("/allServices", async (req, res) => {
-        //     const result = await productCollection.find({}).toArray();
-        //     res.send(result);
-        //     console.log(result);
-        // });
-
-        //Get Single Service -Lima
-        // app.get('/products/:id', async (req, res) => {
-        //     console.log(req.params.id);
-        //     // const id = req.params.id;
-        //     // console.log('getting specific service', id);
-        //     // const query = { _id: ObjectId(id) };
-        //     // const service = await productCollection.findOne(query);
-        //     // res.json(service);
-
-        //     const service = await productCollection
-        //         .find({ _id: ObjectId(req.params.id) })
-        //         .toArray();
-        //     // res.send(service[0]);
-        //     console.log(service);
-
-        // })
-
-
 
 
         // get single product - Git hub
@@ -154,13 +122,7 @@ async function run() {
                 });
         });
 
-        // Add Orders API (maybe not working Lima)
 
-        // app.post('/orders', async (req, res) => {
-        //     const order = req.body;
-        //     console.log('order', order);
-        //     res.send('order processed');
-        // })
 
 
         app.get('/users/:email', async (req, res) => {
@@ -209,38 +171,6 @@ async function run() {
 
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // app.put('/users/admin', async (req, res) => {
-        //     const user = req.body;
-        //     console.log('put', user);
-        //     const requester = req.decodedEmail;
-        //     if (requester) {
-        //         const requesterAccount = await usersCollection.findOne({ email: requester });
-        //         if (requesterAccount.role === 'admin') {
-        //             const filter = { email: user.email };
-        //             const updateDoc = { $set: { role: 'admin' } };
-        //             const result = await usersCollection.updateOne(filter, updateDoc);
-        //             res.json(result);
-        //         }
-        //     }
-        //     else {
-        //         res.status(403).json({ message: 'you do not have access to make admin' })
-        //     }
-
-        // })
 
 
     }
