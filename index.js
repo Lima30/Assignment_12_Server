@@ -35,6 +35,7 @@ async function run() {
         // const orderCollection = database.collection('orders');
         const bookingsCollection = database.collection('bookings')
         const usersCollection = database.collection('users');
+        const reviewCollection = database.collection('review');
 
         //GET Products API'-Lima
         // get all service-Github
@@ -50,6 +51,19 @@ async function run() {
 
         app.post("/addServices", async (req, res) => {
             const result = await productCollection.insertOne(req.body);
+            res.send(result);
+        });
+
+
+        app.get('/Review', async (req, res) => {
+            const cursor = reviewCollection.find({});
+            const products = await cursor.toArray();
+            res.send(products);
+        });
+
+
+        app.post("/addReview", async (req, res) => {
+            const result = await reviewCollection.insertOne(req.body);
             res.send(result);
         });
 
