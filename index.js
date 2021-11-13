@@ -53,8 +53,7 @@ async function run() {
             const result = await productCollection.insertOne(req.body);
             res.send(result);
         });
-
-
+        // Review Section
         app.get('/Review', async (req, res) => {
             const cursor = reviewCollection.find({});
             const products = await cursor.toArray();
